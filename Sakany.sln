@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakany.API", "Sakany.API\Sakany.API.csproj", "{56698892-507F-4163-9509-8008A69A7E4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakany.API", "Sakany.API\Sakany.API.csproj", "{56698892-507F-4163-9509-8008A69A7E4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakany.Presentation", "Sakany.Presentation\Sakany.Presentation.csproj", "{562325CA-3152-4CED-BC6F-D807A7002312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakany.Presentation", "Sakany.Presentation\Sakany.Presentation.csproj", "{562325CA-3152-4CED-BC6F-D807A7002312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakany.Application", "Sakany.Application\Sakany.Application.csproj", "{C6E39666-BC56-4967-B08F-6AA54C5E4815}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakany.Application", "Sakany.Application\Sakany.Application.csproj", "{C6E39666-BC56-4967-B08F-6AA54C5E4815}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakany.Domain", "Sakany.Domain\Sakany.Domain.csproj", "{8133BEDC-8B64-435C-92A0-B9079DB9C5BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakany.Domain", "Sakany.Domain\Sakany.Domain.csproj", "{8133BEDC-8B64-435C-92A0-B9079DB9C5BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakany.Infrastructure", "Sakany.Infrastructure\Sakany.Infrastructure.csproj", "{475E06E6-EE21-4A30-9BD0-074005C98A38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakany.Infrastructure", "Sakany.Infrastructure\Sakany.Infrastructure.csproj", "{475E06E6-EE21-4A30-9BD0-074005C98A38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakany.Persistence", "Sakany.Persistence\Sakany.Persistence.csproj", "{2A82A937-7D82-4CE5-B008-8F48128DF609}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakany.Persistence", "Sakany.Persistence\Sakany.Persistence.csproj", "{2A82A937-7D82-4CE5-B008-8F48128DF609}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakany.Shared", "Sakany.Shared\Sakany.Shared.csproj", "{019BCC24-EC61-4111-8E27-97B2D008E3F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakany.Shared", "Sakany.Shared\Sakany.Shared.csproj", "{019BCC24-EC61-4111-8E27-97B2D008E3F7}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FAAC59F8-1590-441E-A945-3AA870FC6ED3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{019BCC24-EC61-4111-8E27-97B2D008E3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{019BCC24-EC61-4111-8E27-97B2D008E3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{019BCC24-EC61-4111-8E27-97B2D008E3F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAAC59F8-1590-441E-A945-3AA870FC6ED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAAC59F8-1590-441E-A945-3AA870FC6ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAAC59F8-1590-441E-A945-3AA870FC6ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAAC59F8-1590-441E-A945-3AA870FC6ED3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
