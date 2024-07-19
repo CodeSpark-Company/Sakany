@@ -1,3 +1,4 @@
+using Sakany.API.Extensions.Middlewares;
 using Sakany.API.Extensions.ServiceCollections;
 using Sakany.Application.Extensions;
 using Sakany.Infrastructure.Extensions;
@@ -42,6 +43,7 @@ namespace Sakany.API
             #region Use Middlewares
 
             app.UsePresentationMiddlewares();
+            app.UseAPIMiddlewares();
 
             #endregion Use Middlewares
 
