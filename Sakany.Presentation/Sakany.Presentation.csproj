@@ -7,6 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\Sakany.Application\Sakany.Application.csproj" />
 		<ProjectReference Include="..\Sakany.Domain\Sakany.Domain.csproj" />
 		<ProjectReference Include="..\Sakany.Infrastructure\Sakany.Infrastructure.csproj" />
