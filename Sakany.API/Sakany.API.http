@@ -1,0 +1,6 @@
+@Sakany.API_HostAddress = http://localhost:5013
+
+GET {{Sakany.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
