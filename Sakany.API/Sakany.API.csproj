@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -8,6 +8,15 @@
 
 	<ItemGroup>
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Sakany.Application\Sakany.Application.csproj" />
+		<ProjectReference Include="..\Sakany.Domain\Sakany.Domain.csproj" />
+		<ProjectReference Include="..\Sakany.Infrastructure\Sakany.Infrastructure.csproj" />
+		<ProjectReference Include="..\Sakany.Persistence\Sakany.Persistence.csproj" />
+		<ProjectReference Include="..\Sakany.Presentation\Sakany.Presentation.csproj" />
+		<ProjectReference Include="..\Sakany.Shared\Sakany.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

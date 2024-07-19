@@ -6,4 +6,9 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\Sakany.Domain\Sakany.Domain.csproj" />
+		<ProjectReference Include="..\Sakany.Shared\Sakany.Shared.csproj" />
+	</ItemGroup>
+
 </Project>
