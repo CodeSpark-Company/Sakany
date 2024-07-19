@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Sakany.Application.Interfaces.UnitOfWork;
+using Sakany.Domain.IdentityEntities;
 using Sakany.Persistence.DataSeeding.Security.Roles;
+using Sakany.Persistence.DataSeeding.Security.Users;
 using Sakany.Persistence.DbContexts;
 
 namespace Sakany.Persistence.DataSeeding
@@ -25,6 +28,8 @@ namespace Sakany.Persistence.DataSeeding
 
                 await InitializeRolesDataAsync(services);
 
+                await InitializeUsersDataAsync(services);
+
                 #endregion Initialize Data
             }
         }
@@ -32,6 +37,17 @@ namespace Sakany.Persistence.DataSeeding
         private static async Task MigrateDatabaseAsync(SakanyDbContext context)
         {
             await context.Database.MigrateAsync();
+        }
+
+        private static async Task InitializeUsersDataAsync(IServiceProvider services)
+        {
+            var userManager = services.GetService<UserManager<ApplicationUser>>();
+            var unitOfWork = services.GetService<IUnitOfWork>();
+
+            if (userManager is null || unitOfWork is null)
+                return;
+
+            await userManager.InitializeUsersDataSeedingAsync(unitOfWork);
         }
 
         private static async Task InitializeRolesDataAsync(IServiceProvider services)
