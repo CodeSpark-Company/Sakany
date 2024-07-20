@@ -8,8 +8,12 @@ using Sakany.Application.Features.User.Authentication.Commands.ChangePassword.Re
 using Sakany.Application.Features.User.Authentication.Commands.ConfirmEmail.DTOs;
 using Sakany.Application.Features.User.Authentication.Commands.ConfirmEmail.Requests;
 using Sakany.Application.Features.User.Authentication.Commands.GetRefreshToken.Requests;
+using Sakany.Application.Features.User.Authentication.Commands.ResetPassword.DTOs;
+using Sakany.Application.Features.User.Authentication.Commands.ResetPassword.Requests;
 using Sakany.Application.Features.User.Authentication.Commands.SignUp.DTOs;
 using Sakany.Application.Features.User.Authentication.Commands.SignUp.Requests;
+using Sakany.Application.Features.User.Authentication.Queries.ForgetPassword.DTOs;
+using Sakany.Application.Features.User.Authentication.Queries.ForgetPassword.Requests;
 using Sakany.Application.Features.User.Authentication.Queries.GetAccessToken.Requests;
 using Sakany.Application.Features.User.Authentication.Queries.SignIn.DTOs;
 using Sakany.Application.Features.User.Authentication.Queries.SignIn.Requests;
@@ -80,6 +84,24 @@ namespace Sakany.API.Controllers.User.Authentication
         [MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(ChangePasswordCommandDTO), StatusCodes.Status200OK)]
         public async Task<IActionResult> ChangePasswordAsync(ChangePasswordCommandRequest request)
+        {
+            var response = await Mediator.Send(request);
+            return ResponseResult(response);
+        }
+
+        [HttpPost("ForgetPassword")]
+        [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(ForgetPasswordQueryDTO), StatusCodes.Status200OK)]
+        public async Task<IActionResult> ForgetPasswordAsync([FromBody] ForgetPasswordQueryRequest request)
+        {
+            var response = await Mediator.Send(request);
+            return ResponseResult(response);
+        }
+
+        [HttpPost("ResetPassword")]
+        [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(ResetPasswordCommandDTO), StatusCodes.Status200OK)]
+        public async Task<IActionResult> ResetPasswordAsync([FromBody] ResetPasswordCommandRequest request)
         {
             var response = await Mediator.Send(request);
             return ResponseResult(response);
