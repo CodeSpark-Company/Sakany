@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sakany.Application.Features.User.Authentication.Commands.SignUp.DTOs;
 using Sakany.Application.Features.User.Authentication.Commands.SignUp.Requests;
+using Sakany.Application.Features.User.Authentication.Queries.SignIn.DTOs;
+using Sakany.Application.Features.User.Authentication.Queries.SignIn.Requests;
 
 namespace Sakany.API.Controllers.User.Authentication
 {
@@ -24,6 +26,16 @@ namespace Sakany.API.Controllers.User.Authentication
         [MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(SignUpCommandDTO), StatusCodes.Status201Created)]
         public async Task<IActionResult> SignUpAsync([FromBody] SignUpCommandRequest request)
+        {
+            var response = await Mediator.Send(request);
+            return ResponseResult(response);
+        }
+
+        [HttpPost("SignIn")]
+        [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(SignInQueryDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SignInQueryDTO), StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> SignInAsync(SignInQueryRequest request)
         {
             var response = await Mediator.Send(request);
             return ResponseResult(response);
