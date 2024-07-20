@@ -1,7 +1,10 @@
 ﻿using Asp.Versioning;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sakany.Application.Features.User.Authentication.Commands.ChangePassword.DTOs;
+using Sakany.Application.Features.User.Authentication.Commands.ChangePassword.Requests;
 using Sakany.Application.Features.User.Authentication.Commands.ConfirmEmail.DTOs;
 using Sakany.Application.Features.User.Authentication.Commands.ConfirmEmail.Requests;
 using Sakany.Application.Features.User.Authentication.Commands.GetRefreshToken.Requests;
@@ -67,6 +70,16 @@ namespace Sakany.API.Controllers.User.Authentication
         [MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(SignInQueryDTO), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetRefreshTokenAsync(GetRefreshTokenCommandRequest request)
+        {
+            var response = await Mediator.Send(request);
+            return ResponseResult(response);
+        }
+
+        [Authorize()]
+        [HttpPost("ChangePassword")]
+        [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(ChangePasswordCommandDTO), StatusCodes.Status200OK)]
+        public async Task<IActionResult> ChangePasswordAsync(ChangePasswordCommandRequest request)
         {
             var response = await Mediator.Send(request);
             return ResponseResult(response);
