@@ -24,7 +24,7 @@ namespace Sakany.API
             builder.Services.AddAPIServiceCollections(builder.Configuration)
                             .AddPresentationLayer(builder.Configuration)
                             .AddPersistenceLayer(builder.Configuration)
-                            .AddInfrastructureLayer()
+                            .AddInfrastructureLayer(builder.Configuration)
                             .AddApplicationLayer();
 
             #endregion Clean Architecture Layers Configuration
