@@ -2,6 +2,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sakany.Application.Features.User.Authentication.Commands.ConfirmEmail.DTOs;
+using Sakany.Application.Features.User.Authentication.Commands.ConfirmEmail.Requests;
 using Sakany.Application.Features.User.Authentication.Commands.SignUp.DTOs;
 using Sakany.Application.Features.User.Authentication.Commands.SignUp.Requests;
 using Sakany.Application.Features.User.Authentication.Queries.SignIn.DTOs;
@@ -26,6 +28,15 @@ namespace Sakany.API.Controllers.User.Authentication
         [MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(SignUpCommandDTO), StatusCodes.Status201Created)]
         public async Task<IActionResult> SignUpAsync([FromBody] SignUpCommandRequest request)
+        {
+            var response = await Mediator.Send(request);
+            return ResponseResult(response);
+        }
+
+        [HttpGet("ConfirmEmail")]
+        [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(ConfirmEmailCommandDTO), StatusCodes.Status200OK)]
+        public async Task<IActionResult> ConfirmEmailAsync([FromQuery] ConfirmEmailCommandRequest request)
         {
             var response = await Mediator.Send(request);
             return ResponseResult(response);
