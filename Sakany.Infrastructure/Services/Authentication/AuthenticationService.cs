@@ -73,9 +73,7 @@ namespace Sakany.Infrastructure.Services.Authentication
                     </html>"
                 );
 
-            /// TODO: UnComment in Production.
-            //await _mailService.SendAsync(mailData);
-            await _userManager.ConfirmEmailAsync(user, token);
+            await _mailService.SendAsync(mailData);
         }
 
         public async Task<SignUpDTOResponse> SignUpAsync(SignUpDTORequest request)
@@ -134,7 +132,7 @@ namespace Sakany.Infrastructure.Services.Authentication
             // Build Response
             return new SignInDTOResponse()
             {
-                Message = "SignIn Successfully",
+                Message = "SignIn Successfully.",
                 IsAuthenticated = true,
                 AccessToken = await _tokenService.GenerateAccessTokenAsync(user),
                 RefreshToken = await _tokenService.GenerateRefreshTokenAsync(user),
