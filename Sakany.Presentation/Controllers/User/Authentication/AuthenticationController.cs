@@ -45,6 +45,7 @@ namespace Sakany.API.Controllers.User.Authentication
         [HttpGet("ConfirmEmail")]
         [MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(ConfirmEmailCommandDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ConfirmEmailCommandDTO), StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> ConfirmEmailAsync([FromQuery] ConfirmEmailCommandRequest request)
         {
             var response = await Mediator.Send(request);
@@ -101,6 +102,7 @@ namespace Sakany.API.Controllers.User.Authentication
         [HttpPost("ResetPassword")]
         [MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(ResetPasswordCommandDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResetPasswordCommandDTO), StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> ResetPasswordAsync([FromBody] ResetPasswordCommandRequest request)
         {
             var response = await Mediator.Send(request);
