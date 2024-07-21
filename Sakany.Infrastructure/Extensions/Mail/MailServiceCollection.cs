@@ -1,9 +1,9 @@
-﻿using Sakany.Application.Interfaces.Services.Mail;
-using Sakany.Infrastructure.Services.Mail;
-using Sakany.Shared.Helpers.MailConfiguration;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Sakany.Application.Interfaces.Services.Mail;
+using Sakany.Infrastructure.Services.Mail;
+using Sakany.Shared.Helpers.MailConfiguration;
 
 namespace Sakany.Infrastructure.Extensions.Mail
 {

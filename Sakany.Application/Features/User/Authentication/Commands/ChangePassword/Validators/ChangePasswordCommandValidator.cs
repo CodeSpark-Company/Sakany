@@ -1,8 +1,8 @@
-﻿using Sakany.Application.Features.User.Authentication.Commands.ChangePassword.Requests;
-using Sakany.Domain.IdentityEntities;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Sakany.Application.Features.User.Authentication.Commands.ChangePassword.Requests;
+using Sakany.Domain.IdentityEntities;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 

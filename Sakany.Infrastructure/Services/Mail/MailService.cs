@@ -1,9 +1,9 @@
-﻿using Sakany.Application.Interfaces.Services.Mail;
-using Sakany.Shared.Helpers.MailConfiguration;
-using MailKit.Net.Smtp;
+﻿using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Logging;
 using MimeKit;
+using Sakany.Application.Interfaces.Services.Mail;
+using Sakany.Shared.Helpers.MailConfiguration;
 
 namespace Sakany.Infrastructure.Services.Mail
 {

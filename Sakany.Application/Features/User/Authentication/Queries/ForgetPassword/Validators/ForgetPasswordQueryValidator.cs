@@ -1,7 +1,7 @@
-﻿using Sakany.Application.Features.User.Authentication.Queries.ForgetPassword.Requests;
-using Sakany.Domain.IdentityEntities;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.AspNetCore.Identity;
+using Sakany.Application.Features.User.Authentication.Queries.ForgetPassword.Requests;
+using Sakany.Domain.IdentityEntities;
 
 namespace Sakany.Application.Features.User.Authentication.Queries.ForgetPassword.Validators
 {

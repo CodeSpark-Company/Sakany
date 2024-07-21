@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
+using MediatR;
 using Sakany.Application.DTOs.Authentication.ResetPassword;
 using Sakany.Application.Features.User.Authentication.Commands.ResetPassword.DTOs;
 using Sakany.Application.Features.User.Authentication.Commands.ResetPassword.Requests;
 using Sakany.Application.Interfaces.Services.Authentication;
 using Sakany.Shared.Responses;
-using MediatR;
 
 namespace Sakany.Application.Features.User.Authentication.Commands.ResetPassword.Handlers
 {

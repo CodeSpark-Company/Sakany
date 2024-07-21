@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Sakany.API.Extensions.ServiceCollections.Authentication.Options;
+﻿using Sakany.API.Extensions.ServiceCollections.Authentication.Options;
 
 namespace Sakany.API.Extensions.ServiceCollections.Authentication
 {

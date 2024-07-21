@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
+using MediatR;
 using Sakany.Application.DTOs.Authentication.ForgetPassword;
 using Sakany.Application.Features.User.Authentication.Queries.ForgetPassword.DTOs;
 using Sakany.Application.Features.User.Authentication.Queries.ForgetPassword.Requests;
 using Sakany.Application.Interfaces.Services.Authentication;
 using Sakany.Shared.Responses;
-using MediatR;
 
 namespace Sakany.Application.Features.User.Authentication.Queries.ForgetPassword.Handlers
 {

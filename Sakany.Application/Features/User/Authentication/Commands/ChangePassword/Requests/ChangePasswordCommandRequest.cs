@@ -1,6 +1,6 @@
-﻿using Sakany.Application.Features.User.Authentication.Commands.ChangePassword.DTOs;
+﻿using MediatR;
+using Sakany.Application.Features.User.Authentication.Commands.ChangePassword.DTOs;
 using Sakany.Shared.Responses;
-using MediatR;
 
 namespace Sakany.Application.Features.User.Authentication.Commands.ChangePassword.Requests
 {

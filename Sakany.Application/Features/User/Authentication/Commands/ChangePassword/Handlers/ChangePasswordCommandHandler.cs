@@ -1,11 +1,11 @@
-﻿using Sakany.Application.Features.User.Authentication.Commands.ChangePassword.DTOs;
-using Sakany.Application.Features.User.Authentication.Commands.ChangePassword.Requests;
-using Sakany.Domain.IdentityEntities;
-using Sakany.Shared.Responses;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Sakany.Application.Features.User.Authentication.Commands.ChangePassword.DTOs;
+using Sakany.Application.Features.User.Authentication.Commands.ChangePassword.Requests;
+using Sakany.Domain.IdentityEntities;
+using Sakany.Shared.Responses;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 

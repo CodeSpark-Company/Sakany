@@ -1,6 +1,6 @@
-﻿using Sakany.Application.Features.User.Authentication.Commands.ResetPassword.DTOs;
+﻿using MediatR;
+using Sakany.Application.Features.User.Authentication.Commands.ResetPassword.DTOs;
 using Sakany.Shared.Responses;
-using MediatR;
 
 namespace Sakany.Application.Features.User.Authentication.Commands.ResetPassword.Requests
 {
