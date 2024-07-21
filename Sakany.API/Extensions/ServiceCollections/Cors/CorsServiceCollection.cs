@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace Sakany.Presentation.Extensions.ServiceCollections.Cors
+﻿namespace Sakany.API.Extensions.ServiceCollections.Cors
 {
     public static class CorsServiceCollection
     {

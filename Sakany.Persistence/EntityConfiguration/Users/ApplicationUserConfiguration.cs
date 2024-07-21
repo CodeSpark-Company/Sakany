@@ -35,6 +35,12 @@ namespace Sakany.Persistence.EntityConfiguration.Users
                    .HasDefaultValue(UserStatus.InActive.ToString())
                    .IsRequired();
 
+            builder.Property(user => user.ResetPasswordOTP)
+                   .IsRequired(false);
+
+            builder.Property(user => user.ResetPasswordOTPExpiresAt)
+                   .IsRequired(false);
+
             builder.Property(user => user.CreatedAt)
                    .HasDefaultValue(DateTime.UtcNow)
                    .IsRequired();

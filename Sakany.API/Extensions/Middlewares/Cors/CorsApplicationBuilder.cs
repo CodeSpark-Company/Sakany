@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace Sakany.Presentation.Extensions.Middlewares.Cors
+﻿namespace Sakany.API.Extensions.Middlewares.Cors
 {
     public static class CorsApplicationBuilder
     {

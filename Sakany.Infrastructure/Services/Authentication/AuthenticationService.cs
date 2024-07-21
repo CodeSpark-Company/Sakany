@@ -68,7 +68,7 @@ namespace Sakany.Infrastructure.Services.Authentication
                             <h2>Confirm Your Email</h2>
                             <p>Dear {mailUserName},</p>
                             <p>Please confirm your account by following this link: <a href='{HtmlEncoder.Default.Encode(confirmationUrl)}'>Confirm Email</a></p>
-                            <p>Best regards,<br/>Abdullah Kamal</p>
+                            <p>Best regards,<br/>Sakany Inc.</p>
                         </body>
                     </html>"
                 );
@@ -172,8 +172,14 @@ namespace Sakany.Infrastructure.Services.Authentication
             return new ConfirmEmailDTOResponse()
             {
                 IsAuthenticated = true,
-                Message = "Email Confirmation Success."
+                Message = "Email Confirmation Successfully."
             };
+        }
+
+        private string GenerateOTP()
+        {
+            var random = new Random();
+            return random.Next(100000, 999999).ToString();
         }
 
         public async Task<ForgetPasswordDTOResponse> ForgetPasswordAsync(ForgetPasswordDTORequest request)
@@ -181,8 +187,10 @@ namespace Sakany.Infrastructure.Services.Authentication
             var user = await _userManager.FindByEmailAsync(request.Email);
 
             // Build Confirmation Mail
-            var token = await _userManager.GeneratePasswordResetTokenAsync(user!);
-            var encodedToken = WebUtility.HtmlEncode(token);
+            var otp = GenerateOTP();
+            user!.ResetPasswordOTP = otp;
+            user.ResetPasswordOTPExpiresAt = DateTime.UtcNow.AddHours(2);
+            await _userManager.UpdateAsync(user);
 
             // Send Confirmation Mail
             var mailUserName = new MailAddress(user!.Email!).User;
@@ -191,46 +199,67 @@ namespace Sakany.Infrastructure.Services.Authentication
                 mailUserName,
                 user.Email!,
                 "Reset Your Password",
-                $@"
-                    <html>
-                        <body>
-                            <h2>Reset Your Password</h2>
-                            <p>Dear {mailUserName},</p>
-                            <p><b>UserId:</b> {user.Id}</p>
-                            <p><b>Token:</b> {token}</p>
-                            <br />
-                            <p>Best regards,<br/>Abdullah Kamal</p>
-                        </body>
-                    </html>"
+            $@"
+                <html>
+                    <body>
+                        <h2>Reset Your Password</h2>
+                        <p>Dear {mailUserName},</p>
+                        <p>Your OTP for password reset is: <b>{otp}</b></p>
+                        <p>This OTP is valid for 2 hours.</p>
+                        <p>Best regards,<br/>Sakany Inc.</p>
+                    </body>
+                </html>"
             );
             await _mailService.SendAsync(mailData);
 
             return new ForgetPasswordDTOResponse
             {
-                Message = "Please check your email to reset your password."
+                Message = "Please check your email for the OTP to reset your password."
             };
         }
 
         public async Task<ResetPasswordDTOResponse> ResetPasswordAsync(ResetPasswordDTORequest request)
         {
-            var user = await _userManager.FindByIdAsync(request.UserId);
+            var user = await _userManager.FindByEmailAsync(request.Email);
 
-            var token = WebUtility.HtmlDecode(request.Token);
-            var result = await _userManager.ResetPasswordAsync(user!, token, request.NewPassword);
+            if (user == null || user.ResetPasswordOTP != request.OTP || user.ResetPasswordOTPExpiresAt < DateTime.UtcNow)
+            {
+                return new ResetPasswordDTOResponse
+                {
+                    IsAuthenticated = false,
+                    Message = "OTP is Invalid or Expired!",
+                };
+            }
+
+            var result = await _userManager.RemovePasswordAsync(user);
             if (!result.Succeeded)
             {
                 return new ResetPasswordDTOResponse()
                 {
-                    Message = "Reset Password Failed.",
                     IsAuthenticated = false,
+                    Message = "Reset Password Failed!",
                 };
             }
+
+            result = await _userManager.AddPasswordAsync(user, request.NewPassword);
+            if (!result.Succeeded)
+            {
+                return new ResetPasswordDTOResponse()
+                {
+                    IsAuthenticated = false,
+                    Message = "Reset Password Failed!",
+                };
+            }
+
+            user.ResetPasswordOTP = null;
+            user.ResetPasswordOTPExpiresAt = null;
+            await _userManager.UpdateAsync(user);
 
             // Build Response
             return new ResetPasswordDTOResponse()
             {
-                Message = "Reset Password Success.",
                 IsAuthenticated = true,
+                Message = "Password Reset Successfully.",
             };
         }
 

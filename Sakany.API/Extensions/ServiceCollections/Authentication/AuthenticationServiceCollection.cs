@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Sakany.Presentation.Extensions.ServiceCollections.Authentication.Options;
+using Sakany.API.Extensions.ServiceCollections.Authentication.Options;
 
-namespace Sakany.Presentation.Extensions.ServiceCollections.Authentication
+namespace Sakany.API.Extensions.ServiceCollections.Authentication
 {
     public static class AuthenticationServiceCollection
     {

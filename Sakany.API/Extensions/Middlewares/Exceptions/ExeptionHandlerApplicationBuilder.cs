@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Sakany.Presentation.Middlewares;
 
-namespace Sakany.Presentation.Extensions.Middlewares.Exceptions
+namespace Sakany.API.Extensions.Middlewares.Exceptions
 {
     public static class ExeptionHandlerApplicationBuilder
     {
         public static IApplicationBuilder UseExeptionHandlerMiddlewares(this IApplicationBuilder app)
         {
-            //app.UseMiddleware<ExceptionHandlerMiddleware>();
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
             return app;
         }
     }

@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Sakany.Presentation.Middlewares;
 
-namespace Sakany.Presentation.Extensions.Middlewares.Exceptions
+namespace Sakany.API.Extensions.Middlewares.Exceptions
 {
     public static class GlobalExceptionApplicationBuilder
     {
         public static IApplicationBuilder UseGlobalExceptionMiddlewares(this IApplicationBuilder app)
         {
-            //app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+            app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
             return app;
         }
     }

@@ -12,8 +12,8 @@ using Sakany.Persistence.DbContexts;
 namespace Sakany.Persistence.Migrations
 {
     [DbContext(typeof(SakanyDbContext))]
-    [Migration("20240719215618_IdentityMigration")]
-    partial class IdentityMigration
+    [Migration("20240721113243_ApplicationUserMigration")]
+    partial class ApplicationUserMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -172,7 +172,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 19, 21, 56, 18, 185, DateTimeKind.Utc).AddTicks(5576));
+                        .HasDefaultValue(new DateTime(2024, 7, 21, 11, 32, 43, 454, DateTimeKind.Utc).AddTicks(1652));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
@@ -193,7 +193,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 19, 21, 56, 18, 185, DateTimeKind.Utc).AddTicks(6136));
+                        .HasDefaultValue(new DateTime(2024, 7, 21, 11, 32, 43, 454, DateTimeKind.Utc).AddTicks(2176));
 
                     b.Property<DateTime?>("RevokedAt")
                         .HasColumnType("datetime2");
@@ -231,7 +231,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 19, 21, 56, 18, 194, DateTimeKind.Utc).AddTicks(6198));
+                        .HasDefaultValue(new DateTime(2024, 7, 21, 11, 32, 43, 463, DateTimeKind.Utc).AddTicks(8809));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
@@ -242,7 +242,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 19, 21, 56, 18, 194, DateTimeKind.Utc).AddTicks(6714));
+                        .HasDefaultValue(new DateTime(2024, 7, 21, 11, 32, 43, 463, DateTimeKind.Utc).AddTicks(9425));
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -281,7 +281,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 19, 21, 56, 18, 188, DateTimeKind.Utc).AddTicks(1209));
+                        .HasDefaultValue(new DateTime(2024, 7, 21, 11, 32, 43, 457, DateTimeKind.Utc).AddTicks(423));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
@@ -310,7 +310,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 19, 21, 56, 18, 188, DateTimeKind.Utc).AddTicks(1655));
+                        .HasDefaultValue(new DateTime(2024, 7, 21, 11, 32, 43, 457, DateTimeKind.Utc).AddTicks(827));
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -328,6 +328,12 @@ namespace Sakany.Persistence.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ResetPasswordOTP")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ResetPasswordOTPExpiresAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");

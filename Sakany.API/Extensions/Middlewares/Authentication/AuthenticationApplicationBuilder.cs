@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace Sakany.Presentation.Extensions.Middlewares.Authentication
+﻿namespace Sakany.API.Extensions.Middlewares.Authentication
 {
     public static class AuthenticationApplicationBuilder
     {

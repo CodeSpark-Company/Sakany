@@ -15,6 +15,14 @@ namespace Sakany.Persistence.Extensions.Identity
                     .AddRoleManager<RoleManager<IdentityRole>>()
                     .AddEntityFrameworkStores<SakanyDbContext>()
                     .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.SignIn.RequireConfirmedEmail = true;
+            });
+
+            services.Configure<DataProtectionTokenProviderOptions>(options => options.TokenLifespan = TimeSpan.FromHours(5));
+
             return services;
         }
     }

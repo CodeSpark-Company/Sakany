@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 using Sakany.Shared.Exceptions.ValidationError;
 
-namespace Sakany.Presentation.Extensions.ServiceCollections.Exceptions
+namespace Sakany.API.Extensions.ServiceCollections.Exceptions
 {
     public static class ValidationErrorExceptionServiceCollection
     {

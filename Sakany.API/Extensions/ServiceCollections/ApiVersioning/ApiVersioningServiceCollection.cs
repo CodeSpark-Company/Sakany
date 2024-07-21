@@ -1,7 +1,6 @@
 ﻿using Asp.Versioning;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Sakany.Presentation.Extensions.ServiceCollections.ApiVersioning
+namespace Sakany.API.Extensions.ServiceCollections.ApiVersioning
 {
     public static class ApiVersioningServiceCollection
     {

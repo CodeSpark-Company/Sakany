@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Sakany.Presentation.Extensions.ServiceCollections.Authentication.Options
+namespace Sakany.API.Extensions.ServiceCollections.Authentication.Options
 {
     public static class AuthenticationOptions
     {

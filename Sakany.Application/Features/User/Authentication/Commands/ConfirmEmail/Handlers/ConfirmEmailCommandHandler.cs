@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
+using MediatR;
 using Sakany.Application.DTOs.Authentication.ConfirmEmail;
 using Sakany.Application.Features.User.Authentication.Commands.ConfirmEmail.DTOs;
 using Sakany.Application.Features.User.Authentication.Commands.ConfirmEmail.Requests;
 using Sakany.Application.Interfaces.Services.Authentication;
 using Sakany.Shared.Responses;
-using MediatR;
 
 namespace Sakany.Application.Features.User.Authentication.Commands.ConfirmEmail.Handlers
 {
@@ -35,7 +35,7 @@ namespace Sakany.Application.Features.User.Authentication.Commands.ConfirmEmail.
             var confirmEmailDTOResponse = await _authenticationService.ConfirmEmailAsync(confirmEmailDTORequest);
 
             var response = _mapper.Map<ConfirmEmailCommandDTO>(confirmEmailDTOResponse);
-            return Success(response);
+            return response.IsAuthenticated ? Success(response) : Unauthorized<ConfirmEmailCommandDTO>(response.Message);
         }
 
         #endregion Methods

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace Sakany.API.Extensions.Middlewares.Swagger
+﻿namespace Sakany.API.Extensions.Middlewares.Swagger
 {
     public static class SwaggerApplicationBuilder
     {

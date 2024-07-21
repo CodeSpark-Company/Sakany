@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Sakany.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class IdentityMigration : Migration
+    public partial class ApplicationUserMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -43,8 +43,10 @@ namespace Sakany.Persistence.Migrations
                     BirthDate = table.Column<DateOnly>(type: "date", nullable: true),
                     Age = table.Column<int>(type: "int", nullable: true, computedColumnSql: "CASE WHEN [BirthDate] IS NULL THEN NULL ELSE DATEDIFF(YEAR, [BirthDate], GETDATE()) - CASE WHEN DATEADD(YEAR, DATEDIFF(YEAR, [BirthDate], GETDATE()), [BirthDate]) > GETDATE() THEN 1 ELSE 0 END END"),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false, defaultValue: "InActive"),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 19, 21, 56, 18, 188, DateTimeKind.Utc).AddTicks(1209)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 19, 21, 56, 18, 188, DateTimeKind.Utc).AddTicks(1655)),
+                    ResetPasswordOTP = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ResetPasswordOTPExpiresAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 21, 11, 32, 43, 457, DateTimeKind.Utc).AddTicks(423)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 21, 11, 32, 43, 457, DateTimeKind.Utc).AddTicks(827)),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -102,8 +104,8 @@ namespace Sakany.Persistence.Migrations
                     RevokedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false, computedColumnSql: "CASE WHEN [RevokedAt] IS NULL AND [ExpiresAt] > GETUTCDATE() THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 19, 21, 56, 18, 185, DateTimeKind.Utc).AddTicks(5576)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 19, 21, 56, 18, 185, DateTimeKind.Utc).AddTicks(6136)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 21, 11, 32, 43, 454, DateTimeKind.Utc).AddTicks(1652)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 21, 11, 32, 43, 454, DateTimeKind.Utc).AddTicks(2176)),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -174,8 +176,8 @@ namespace Sakany.Persistence.Migrations
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CivilId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 19, 21, 56, 18, 194, DateTimeKind.Utc).AddTicks(6198)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 19, 21, 56, 18, 194, DateTimeKind.Utc).AddTicks(6714)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 21, 11, 32, 43, 463, DateTimeKind.Utc).AddTicks(8809)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 21, 11, 32, 43, 463, DateTimeKind.Utc).AddTicks(9425)),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>

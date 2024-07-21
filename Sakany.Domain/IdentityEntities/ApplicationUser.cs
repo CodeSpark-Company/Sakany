@@ -16,6 +16,9 @@ namespace Sakany.Domain.IdentityEntities
 
         public string? Status { get; set; }
 
+        public string? ResetPasswordOTP { get; set; }
+        public DateTime? ResetPasswordOTPExpiresAt { get; set; }
+
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
         public DateTime? DeletedAt { get; set; }

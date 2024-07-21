@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Sakany.Presentation.Extensions.Middlewares.Authorization
+namespace Sakany.API.Extensions.Middlewares.Authorization
 {
     public static class AuthorizationServiceCollection
     {

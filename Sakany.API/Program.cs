@@ -4,8 +4,6 @@ using Sakany.Application.Extensions;
 using Sakany.Infrastructure.Extensions;
 using Sakany.Persistence.DataSeeding;
 using Sakany.Persistence.Extensions;
-using Sakany.Presentation.Extensions.Middlewares;
-using Sakany.Presentation.Extensions.ServiceCollections;
 
 namespace Sakany.API
 {
@@ -22,7 +20,6 @@ namespace Sakany.API
             #region Clean Architecture Layers Configuration
 
             builder.Services.AddAPIServiceCollections(builder.Configuration)
-                            .AddPresentationLayer(builder.Configuration)
                             .AddPersistenceLayer(builder.Configuration)
                             .AddInfrastructureLayer(builder.Configuration)
                             .AddApplicationLayer();
@@ -42,7 +39,6 @@ namespace Sakany.API
 
             #region Use Middlewares
 
-            app.UsePresentationMiddlewares();
             app.UseAPIMiddlewares();
 
             #endregion Use Middlewares

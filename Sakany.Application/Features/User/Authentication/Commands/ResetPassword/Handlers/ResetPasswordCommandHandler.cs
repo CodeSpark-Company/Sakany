@@ -35,7 +35,7 @@ namespace Sakany.Application.Features.User.Authentication.Commands.ResetPassword
             var resetPasswordDTOResponse = await _authenticationService.ResetPasswordAsync(resetPasswordDTORequest);
 
             var response = _mapper.Map<ResetPasswordCommandDTO>(resetPasswordDTOResponse);
-            return Success(response);
+            return response.IsAuthenticated ? Success(response) : Unauthorized<ResetPasswordCommandDTO>(response.Message);
         }
 
         #endregion Methods

@@ -35,17 +35,18 @@ namespace Sakany.Application.Features.User.Authentication.Commands.ResetPassword
 
         private void UserIdValidator()
         {
-            RuleFor(request => request.UserId)
-                .NotEmpty().WithMessage("UserId is required field.")
-                .NotNull().WithMessage("UserId must be not null.")
-                .MustAsync(async (userId, cancellationToken) => await _userManager.FindByIdAsync(userId) != null).WithMessage("UserId doesn't exists.");
+            RuleFor(request => request.Email)
+                .NotEmpty().WithMessage("Email is required field.")
+                .NotNull().WithMessage("Email must be not null.")
+                .Matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$").WithMessage("Email must be valid.")
+                .MustAsync(async (email, cancellationToken) => (await _userManager.FindByEmailAsync(email)) != null).WithMessage("Email already exists.");
         }
 
         private void TokenValidator()
         {
-            RuleFor(request => request.Token)
-                .NotEmpty().WithMessage("Token is required field.")
-                .NotNull().WithMessage("Token must be not null.");
+            RuleFor(request => request.OTP)
+                .NotEmpty().WithMessage("OTP is required field.")
+                .NotNull().WithMessage("OTP must be not null.");
         }
 
         private void PasswordValidator()

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace Sakany.Presentation.Extensions.Middlewares.StaticFiles
+﻿namespace Sakany.API.Extensions.Middlewares.StaticFiles
 {
     public static class StaticFilesApplicationBuilder
     {
