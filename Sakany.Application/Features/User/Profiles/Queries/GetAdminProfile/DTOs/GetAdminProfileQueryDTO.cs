@@ -1,6 +1,6 @@
-﻿namespace Sakany.Application.Features.User.Profiles.Queries.GetProfileByUserAccessToken.DTOs
+﻿namespace Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.DTOs
 {
-    public class GetProfileByUserAccessTokenQueryDTO
+    public class GetAdminProfileQueryDTO
     {
         #region Properties
 
@@ -11,15 +11,13 @@
         public string? LastName { get; set; }
 
         public string? PhoneNumber { get; set; }
+        public int? Age { get; set; }
 
         public string? Bio { get; set; }
         public string? ImageUrl { get; set; }
         public string? CivilId { get; set; }
 
-        public int? Age { get; set; }
         public DateTime CreatedAt { get; set; }
-
-        public object AdditionalFields { get; set; } = new object();
 
         #endregion Properties
     }

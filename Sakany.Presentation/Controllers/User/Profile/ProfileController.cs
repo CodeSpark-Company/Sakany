@@ -3,8 +3,14 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sakany.Application.Features.User.Profiles.Queries.GetProfileByUserAccessToken.DTOs;
-using Sakany.Application.Features.User.Profiles.Queries.GetProfileByUserAccessToken.Requests;
+using Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.DTOs;
+using Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.Requests;
+using Sakany.Application.Features.User.Profiles.Queries.GetRealtorProfile.DTOs;
+using Sakany.Application.Features.User.Profiles.Queries.GetRealtorProfile.Requests;
+using Sakany.Application.Features.User.Profiles.Queries.GetStudentProfile.DTOs;
+using Sakany.Application.Features.User.Profiles.Queries.GetStudentProfile.Requests;
+using Sakany.Application.Features.User.Profiles.Queries.GetSuperAdminProfile.DTOs;
+using Sakany.Application.Features.User.Profiles.Queries.GetSuperAdminProfile.Requests;
 
 namespace Sakany.API.Controllers.User.Profile
 {
@@ -20,12 +26,45 @@ namespace Sakany.API.Controllers.User.Profile
 
         #endregion Constructors
 
-        [HttpGet]
+        [HttpGet("SuperAdmin")]
         [MapToApiVersion("1.0")]
-        [ProducesResponseType(typeof(GetProfileByUserAccessTokenQueryDTO), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(GetProfileByUserAccessTokenQueryDTO), StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(typeof(GetProfileByUserAccessTokenQueryDTO), StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetProfileByUserAccessTokenAsync([FromQuery] GetProfileByUserAccessTokenQueryRequest request)
+        [ProducesResponseType(typeof(GetSuperAdminProfileQueryDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GetSuperAdminProfileQueryDTO), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(GetSuperAdminProfileQueryDTO), StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> GetSuperAdminProfileAsync([FromQuery] GetSuperAdminProfileQueryRequest request)
+        {
+            var response = await Mediator.Send(request);
+            return ResponseResult(response);
+        }
+
+        [HttpGet("Admin")]
+        [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(GetAdminProfileQueryDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GetAdminProfileQueryDTO), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(GetAdminProfileQueryDTO), StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> GetAdminProfileAsync([FromQuery] GetAdminProfileQueryRequest request)
+        {
+            var response = await Mediator.Send(request);
+            return ResponseResult(response);
+        }
+
+        [HttpGet("Realtor")]
+        [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(GetRealtorProfileQueryDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GetRealtorProfileQueryDTO), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(GetRealtorProfileQueryDTO), StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> GetRealtorProfileAsync([FromQuery] GetRealtorProfileQueryRequest request)
+        {
+            var response = await Mediator.Send(request);
+            return ResponseResult(response);
+        }
+
+        [HttpGet("Student")]
+        [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(GetStudentProfileQueryDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GetStudentProfileQueryDTO), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(GetStudentProfileQueryDTO), StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> GetStudentProfileAsync([FromQuery] GetStudentProfileQueryRequest request)
         {
             var response = await Mediator.Send(request);
             return ResponseResult(response);
