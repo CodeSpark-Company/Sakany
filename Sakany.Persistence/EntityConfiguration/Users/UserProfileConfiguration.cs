@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Sakany.Domain.Entities.Users;
+using System.Reflection.Emit;
 
 namespace Sakany.Persistence.EntityConfiguration.Users
 {

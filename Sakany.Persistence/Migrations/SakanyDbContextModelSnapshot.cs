@@ -169,7 +169,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 21, 11, 32, 43, 454, DateTimeKind.Utc).AddTicks(1652));
+                        .HasDefaultValue(new DateTime(2024, 7, 21, 15, 47, 38, 998, DateTimeKind.Utc).AddTicks(968));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
@@ -190,7 +190,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 21, 11, 32, 43, 454, DateTimeKind.Utc).AddTicks(2176));
+                        .HasDefaultValue(new DateTime(2024, 7, 21, 15, 47, 38, 998, DateTimeKind.Utc).AddTicks(1489));
 
                     b.Property<DateTime?>("RevokedAt")
                         .HasColumnType("datetime2");
@@ -228,7 +228,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 21, 11, 32, 43, 463, DateTimeKind.Utc).AddTicks(8809));
+                        .HasDefaultValue(new DateTime(2024, 7, 21, 15, 47, 39, 0, DateTimeKind.Utc).AddTicks(314));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
@@ -239,7 +239,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 21, 11, 32, 43, 463, DateTimeKind.Utc).AddTicks(9425));
+                        .HasDefaultValue(new DateTime(2024, 7, 21, 15, 47, 39, 0, DateTimeKind.Utc).AddTicks(858));
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -278,7 +278,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 21, 11, 32, 43, 457, DateTimeKind.Utc).AddTicks(423));
+                        .HasDefaultValue(new DateTime(2024, 7, 21, 15, 47, 38, 999, DateTimeKind.Utc).AddTicks(1169));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
@@ -307,7 +307,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 21, 11, 32, 43, 457, DateTimeKind.Utc).AddTicks(827));
+                        .HasDefaultValue(new DateTime(2024, 7, 21, 15, 47, 38, 999, DateTimeKind.Utc).AddTicks(1730));
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)

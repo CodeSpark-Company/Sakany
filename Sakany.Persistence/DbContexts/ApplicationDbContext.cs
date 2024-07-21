@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Sakany.Domain.Entities.Users;
 using Sakany.Domain.IdentityEntities;
 using System.Reflection;
 
@@ -15,6 +16,16 @@ namespace Sakany.Persistence.DbContexts
         }
 
         #endregion Constructors
+
+        #region DbSets
+
+        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<StudentProfile> StudentProfiles { get; set; }
+        public DbSet<RealtorProfile> RealtorProfiles { get; set; }
+        public DbSet<SuperAdminProfile> SuperAdminProfiles { get; set; }
+        public DbSet<AdminProfile> AdminProfiles { get; set; }
+
+        #endregion DbSets
 
         #region Methods
 
