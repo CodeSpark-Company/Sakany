@@ -1,5 +1,4 @@
-﻿using Sakany.Application.Features.User.Profiles.Queries.GetSuperAdminProfile.Requests;
-using FluentValidation;
+﻿using FluentValidation;
 using Sakany.Application.Features.User.Profiles.Queries.GetStudentProfile.Requests;
 
 namespace Sakany.Application.Features.User.Profiles.Queries.GetSuperAdminProfile.Validators

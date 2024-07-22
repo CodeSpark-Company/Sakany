@@ -1,6 +1,6 @@
-﻿using Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.DTOs;
+﻿using MediatR;
+using Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.DTOs;
 using Sakany.Shared.Responses;
-using MediatR;
 
 namespace Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.Requests
 {

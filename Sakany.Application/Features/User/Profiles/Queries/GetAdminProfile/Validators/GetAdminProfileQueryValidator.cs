@@ -1,5 +1,5 @@
-﻿using Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.Requests;
-using FluentValidation;
+﻿using FluentValidation;
+using Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.Requests;
 
 namespace Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.Validators
 {

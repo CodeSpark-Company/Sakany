@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Sakany.Application.Interfaces.UnitOfWork;
 using Sakany.Domain.IdentityEntities;
 using Sakany.Persistence.DataSeeding.Security.Roles;
 using Sakany.Persistence.DataSeeding.Security.Users;

@@ -1,5 +1,5 @@
-﻿using Sakany.Application.Features.User.Profiles.Queries.GetRealtorProfile.Requests;
-using FluentValidation;
+﻿using FluentValidation;
+using Sakany.Application.Features.User.Profiles.Queries.GetRealtorProfile.Requests;
 
 namespace Sakany.Application.Features.User.Profiles.Queries.GetRealtorProfile.Validators
 {
