@@ -3,6 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.DTOs;
+using Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.Requests;
 using Sakany.Application.Features.User.Profiles.Commands.UpdateSuperAdminProfile.DTOs;
 using Sakany.Application.Features.User.Profiles.Commands.UpdateSuperAdminProfile.Requests;
 using Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.DTOs;
@@ -59,6 +61,18 @@ namespace Sakany.API.Controllers.User.Profile
         [ProducesResponseType(typeof(GetAdminProfileQueryDTO), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(GetAdminProfileQueryDTO), StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> GetAdminProfileAsync([FromQuery] GetAdminProfileQueryRequest request)
+        {
+            var response = await Mediator.Send(request);
+            return ResponseResult(response);
+        }
+
+        [HttpPut("Admin")]
+        [Authorize(Roles = "Admin")]
+        [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(UpdateAdminProfileCommandDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UpdateAdminProfileCommandDTO), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(UpdateAdminProfileCommandDTO), StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> UpdateAdminProfileAsync([FromForm] UpdateAdminProfileCommandRequest request)
         {
             var response = await Mediator.Send(request);
             return ResponseResult(response);
