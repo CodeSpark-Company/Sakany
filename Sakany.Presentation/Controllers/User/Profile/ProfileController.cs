@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.DTOs;
 using Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.Requests;
+using Sakany.Application.Features.User.Profiles.Commands.UpdateRealtorProfile.DTOs;
+using Sakany.Application.Features.User.Profiles.Commands.UpdateRealtorProfile.Requests;
+using Sakany.Application.Features.User.Profiles.Commands.UpdateStudentProfile.DTOs;
+using Sakany.Application.Features.User.Profiles.Commands.UpdateStudentProfile.Requests;
 using Sakany.Application.Features.User.Profiles.Commands.UpdateSuperAdminProfile.DTOs;
 using Sakany.Application.Features.User.Profiles.Commands.UpdateSuperAdminProfile.Requests;
 using Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.DTOs;
@@ -90,6 +94,18 @@ namespace Sakany.API.Controllers.User.Profile
             return ResponseResult(response);
         }
 
+        [HttpPut("Realtor")]
+        [Authorize(Roles = "Realtor")]
+        [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(UpdateRealtorProfileCommandDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UpdateRealtorProfileCommandDTO), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(UpdateRealtorProfileCommandDTO), StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> UpdateRealtorProfileAsync([FromForm] UpdateRealtorProfileCommandRequest request)
+        {
+            var response = await Mediator.Send(request);
+            return ResponseResult(response);
+        }
+
         [HttpGet("Student")]
         [Authorize(Roles = "Student")]
         [MapToApiVersion("1.0")]
@@ -97,6 +113,18 @@ namespace Sakany.API.Controllers.User.Profile
         [ProducesResponseType(typeof(GetStudentProfileQueryDTO), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(GetStudentProfileQueryDTO), StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> GetStudentProfileAsync([FromQuery] GetStudentProfileQueryRequest request)
+        {
+            var response = await Mediator.Send(request);
+            return ResponseResult(response);
+        }
+
+        [HttpPut("Student")]
+        [Authorize(Roles = "Student")]
+        [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(UpdateStudentProfileCommandDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UpdateStudentProfileCommandDTO), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(UpdateStudentProfileCommandDTO), StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> UpdateStudentProfileAsync([FromForm] UpdateStudentProfileCommandRequest request)
         {
             var response = await Mediator.Send(request);
             return ResponseResult(response);

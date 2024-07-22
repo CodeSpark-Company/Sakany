@@ -1,13 +1,13 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.Requests;
+using Sakany.Application.Features.User.Profiles.Commands.UpdateStudentProfile.Requests;
 using Sakany.Domain.Constants.Media;
 using Sakany.Domain.IdentityEntities;
 
-namespace Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.Validators
+namespace Sakany.Application.Features.User.Profiles.Commands.UpdateStudentProfile.Validators
 {
-    public class UpdateAdminProfileCommandValidator : AbstractValidator<UpdateAdminProfileCommandRequest>
+    public class UpdateStudentProfileCommandValidator : AbstractValidator<UpdateStudentProfileCommandRequest>
     {
         #region Properties
 
@@ -17,7 +17,7 @@ namespace Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.
 
         #region Constructors
 
-        public UpdateAdminProfileCommandValidator(UserManager<ApplicationUser> userManager)
+        public UpdateStudentProfileCommandValidator(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             InitializeRules();
@@ -37,6 +37,7 @@ namespace Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.
             BioValidator();
             ImageValidator();
             CivilIdValidator();
+            UniversityIdValidator();
         }
 
         private void UsernameValidator()
@@ -123,6 +124,15 @@ namespace Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.
               .Must(IsDocumentValidSize).WithMessage("Civil ID must be less than 5 MB.")
               .Must(IsDocumentValidExtension).WithMessage("Civil ID must be a PDF file (.pdf).")
               .Must(IsDocumentValidMimeType).WithMessage("Civil ID MIME type must be valid (application/pdf).");
+        }
+
+        private void UniversityIdValidator()
+        {
+            RuleFor(request => request.CivilId)
+              .Cascade(CascadeMode.Stop)
+              .Must(IsDocumentValidSize).WithMessage("University ID must be less than 5 MB.")
+              .Must(IsDocumentValidExtension).WithMessage("University ID must be a PDF file (.pdf).")
+              .Must(IsDocumentValidMimeType).WithMessage("University ID MIME type must be valid (application/pdf).");
         }
 
         private bool IsDocumentValidSize(IFormFile? file)

@@ -65,9 +65,9 @@ namespace Sakany.Application.Features.User.Profiles.Commands.UpdateSuperAdminPro
 
         private void BirthDateValidator()
         {
-            //RuleFor(request => request.BirthDate)
-            //    .Must(birthDate => BeLessThanEighteenYearsOld(birthDate))
-            //    .WithMessage("User must be 18 years or older.");
+            RuleFor(request => request.BirthDate)
+                .Must(birthDate => BeLessThanEighteenYearsOld(birthDate))
+                .WithMessage("User must be 18 years or older.");
         }
 
         private bool BeLessThanEighteenYearsOld(DateOnly? birthDate)

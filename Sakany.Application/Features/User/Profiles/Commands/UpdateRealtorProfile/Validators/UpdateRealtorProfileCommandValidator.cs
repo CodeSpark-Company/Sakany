@@ -1,13 +1,13 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.Requests;
+using Sakany.Application.Features.User.Profiles.Commands.UpdateRealtorProfile.Requests;
 using Sakany.Domain.Constants.Media;
 using Sakany.Domain.IdentityEntities;
 
-namespace Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.Validators
+namespace Sakany.Application.Features.User.Profiles.Commands.UpdateRealtorProfile.Validators
 {
-    public class UpdateAdminProfileCommandValidator : AbstractValidator<UpdateAdminProfileCommandRequest>
+    public class UpdateRealtorProfileCommandValidator : AbstractValidator<UpdateRealtorProfileCommandRequest>
     {
         #region Properties
 
@@ -17,7 +17,7 @@ namespace Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.
 
         #region Constructors
 
-        public UpdateAdminProfileCommandValidator(UserManager<ApplicationUser> userManager)
+        public UpdateRealtorProfileCommandValidator(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             InitializeRules();
@@ -37,6 +37,7 @@ namespace Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.
             BioValidator();
             ImageValidator();
             CivilIdValidator();
+            RealEstateContractValidator();
         }
 
         private void UsernameValidator()
@@ -123,6 +124,15 @@ namespace Sakany.Application.Features.User.Profiles.Commands.UpdateAdminProfile.
               .Must(IsDocumentValidSize).WithMessage("Civil ID must be less than 5 MB.")
               .Must(IsDocumentValidExtension).WithMessage("Civil ID must be a PDF file (.pdf).")
               .Must(IsDocumentValidMimeType).WithMessage("Civil ID MIME type must be valid (application/pdf).");
+        }
+
+        private void RealEstateContractValidator()
+        {
+            RuleFor(request => request.CivilId)
+              .Cascade(CascadeMode.Stop)
+              .Must(IsDocumentValidSize).WithMessage("Real Estate Contract must be less than 5 MB.")
+              .Must(IsDocumentValidExtension).WithMessage("Real Estate Contract must be a PDF file (.pdf).")
+              .Must(IsDocumentValidMimeType).WithMessage("Real Estate Contract MIME type must be valid (application/pdf).");
         }
 
         private bool IsDocumentValidSize(IFormFile? file)
