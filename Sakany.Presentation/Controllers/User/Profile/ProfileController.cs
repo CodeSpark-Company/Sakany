@@ -27,6 +27,7 @@ namespace Sakany.API.Controllers.User.Profile
         #endregion Constructors
 
         [HttpGet("SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin")]
         [MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(GetSuperAdminProfileQueryDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(GetSuperAdminProfileQueryDTO), StatusCodes.Status401Unauthorized)]
@@ -38,6 +39,7 @@ namespace Sakany.API.Controllers.User.Profile
         }
 
         [HttpGet("Admin")]
+        [Authorize(Roles = "Admin")]
         [MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(GetAdminProfileQueryDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(GetAdminProfileQueryDTO), StatusCodes.Status401Unauthorized)]
@@ -49,6 +51,7 @@ namespace Sakany.API.Controllers.User.Profile
         }
 
         [HttpGet("Realtor")]
+        [Authorize(Roles = "Realtor")]
         [MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(GetRealtorProfileQueryDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(GetRealtorProfileQueryDTO), StatusCodes.Status401Unauthorized)]
@@ -60,6 +63,7 @@ namespace Sakany.API.Controllers.User.Profile
         }
 
         [HttpGet("Student")]
+        [Authorize(Roles = "Student")]
         [MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(GetStudentProfileQueryDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(GetStudentProfileQueryDTO), StatusCodes.Status401Unauthorized)]
