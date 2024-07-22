@@ -3,6 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sakany.Application.Features.User.Profiles.Commands.UpdateSuperAdminProfile.DTOs;
+using Sakany.Application.Features.User.Profiles.Commands.UpdateSuperAdminProfile.Requests;
 using Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.DTOs;
 using Sakany.Application.Features.User.Profiles.Queries.GetAdminProfile.Requests;
 using Sakany.Application.Features.User.Profiles.Queries.GetRealtorProfile.DTOs;
@@ -33,6 +35,18 @@ namespace Sakany.API.Controllers.User.Profile
         [ProducesResponseType(typeof(GetSuperAdminProfileQueryDTO), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(GetSuperAdminProfileQueryDTO), StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> GetSuperAdminProfileAsync([FromQuery] GetSuperAdminProfileQueryRequest request)
+        {
+            var response = await Mediator.Send(request);
+            return ResponseResult(response);
+        }
+
+        [HttpPut("SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin")]
+        [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(UpdateSuperAdminProfileCommandDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UpdateSuperAdminProfileCommandDTO), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(UpdateSuperAdminProfileCommandDTO), StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> UpdateSuperAdminProfileAsync([FromForm] UpdateSuperAdminProfileCommandRequest request)
         {
             var response = await Mediator.Send(request);
             return ResponseResult(response);

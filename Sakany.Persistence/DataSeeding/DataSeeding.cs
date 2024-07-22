@@ -42,12 +42,11 @@ namespace Sakany.Persistence.DataSeeding
         private static async Task InitializeUsersDataAsync(IServiceProvider services)
         {
             var userManager = services.GetService<UserManager<ApplicationUser>>();
-            var unitOfWork = services.GetService<IUnitOfWork>();
 
-            if (userManager is null || unitOfWork is null)
+            if (userManager is null)
                 return;
 
-            await userManager.InitializeUsersDataSeedingAsync(unitOfWork);
+            await userManager.InitializeUsersDataSeedingAsync();
         }
 
         private static async Task InitializeRolesDataAsync(IServiceProvider services)

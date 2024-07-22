@@ -12,7 +12,7 @@ namespace Sakany.Application.Mapping.User.Profiles.Queries.GetSuperAdminProfile
         {
             CreateMap<SuperAdminProfile, GetSuperAdminProfileQueryDTO>()
                 .ForMember(destination => destination.Email, options => options.MapFrom(source => source.User!.Email))
-                .ForMember(destination => destination.Username, options => options.MapFrom(source => source.User!.UserName))
+                .ForMember(destination => destination.UserName, options => options.MapFrom(source => source.User!.UserName))
                 .ForMember(destination => destination.FirstName, options => options.MapFrom(source => source.User!.FirstName))
                 .ForMember(destination => destination.LastName, options => options.MapFrom(source => source.User!.LastName))
                 .ForMember(destination => destination.PhoneNumber, options => options.MapFrom(source => source.User!.PhoneNumber))

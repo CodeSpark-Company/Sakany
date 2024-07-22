@@ -12,7 +12,7 @@ using Sakany.Persistence.DbContexts;
 namespace Sakany.Persistence.Migrations
 {
     [DbContext(typeof(SakanyDbContext))]
-    [Migration("20240721154739_UserManagementMigration")]
+    [Migration("20240722131152_UserManagementMigration")]
     partial class UserManagementMigration
     {
         /// <inheritdoc />
@@ -172,7 +172,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 21, 15, 47, 38, 998, DateTimeKind.Utc).AddTicks(968));
+                        .HasDefaultValue(new DateTime(2024, 7, 22, 13, 11, 52, 187, DateTimeKind.Utc).AddTicks(5760));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
@@ -193,7 +193,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 21, 15, 47, 38, 998, DateTimeKind.Utc).AddTicks(1489));
+                        .HasDefaultValue(new DateTime(2024, 7, 22, 13, 11, 52, 187, DateTimeKind.Utc).AddTicks(6374));
 
                     b.Property<DateTime?>("RevokedAt")
                         .HasColumnType("datetime2");
@@ -231,7 +231,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 21, 15, 47, 39, 0, DateTimeKind.Utc).AddTicks(314));
+                        .HasDefaultValue(new DateTime(2024, 7, 22, 13, 11, 52, 189, DateTimeKind.Utc).AddTicks(9060));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
@@ -242,7 +242,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 21, 15, 47, 39, 0, DateTimeKind.Utc).AddTicks(858));
+                        .HasDefaultValue(new DateTime(2024, 7, 22, 13, 11, 52, 189, DateTimeKind.Utc).AddTicks(9743));
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -281,7 +281,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 21, 15, 47, 38, 999, DateTimeKind.Utc).AddTicks(1169));
+                        .HasDefaultValue(new DateTime(2024, 7, 22, 13, 11, 52, 188, DateTimeKind.Utc).AddTicks(7987));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
@@ -310,7 +310,7 @@ namespace Sakany.Persistence.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 7, 21, 15, 47, 38, 999, DateTimeKind.Utc).AddTicks(1730));
+                        .HasDefaultValue(new DateTime(2024, 7, 22, 13, 11, 52, 188, DateTimeKind.Utc).AddTicks(8575));
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -388,8 +388,8 @@ namespace Sakany.Persistence.Migrations
                     b.Property<string>("College")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Level")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Level")
+                        .HasColumnType("int");
 
                     b.Property<string>("UniversityId")
                         .HasColumnType("nvarchar(max)");

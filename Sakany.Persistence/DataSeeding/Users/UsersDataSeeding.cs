@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Sakany.Application.Interfaces.UnitOfWork;
 using Sakany.Domain.Entities.Users;
 using Sakany.Domain.Enumerations.Users;
 using Sakany.Domain.IdentityEntities;
@@ -8,21 +7,30 @@ namespace Sakany.Persistence.DataSeeding.Security.Users
 {
     public static class UsersDataSeeding
     {
-        private static async Task InitializeSuperAdminsAsync(this UserManager<ApplicationUser> userManager, IUnitOfWork unitOfWork)
+        private static async Task InitializeSuperAdminsAsync(this UserManager<ApplicationUser> userManager)
         {
             var superAdmin = new ApplicationUser()
             {
-                Email = "superadmin@sakany.com",
-                UserName = "superadmin",
+                UserName = $"superadmin",
+                Email = $"superadmin@sakany.com",
                 EmailConfirmed = true,
+                PhoneNumber = "+201234567890",
+                FirstName = $"SuperAdmin",
+                LastName = $"SuperAdmin",
+                BirthDate = DateOnly.FromDateTime(DateTime.UtcNow).AddYears(-20),
+                UserProfile = new SuperAdminProfile()
+                {
+                    Bio = "Loading...",
+                    ImageUrl = "http://google.com",
+                    CivilId = "http://google.com",
+                }
             };
 
             await userManager.CreateAsync(superAdmin, "P@ssw0rd");
-            await unitOfWork.Repository<SuperAdminProfile>().AddAsync(new SuperAdminProfile() { UserId = superAdmin.Id, Bio = string.Empty });
             await userManager.AddToRoleAsync(superAdmin, UserRole.SuperAdmin.ToString());
         }
 
-        private static async Task InitializeAdminsAsync(this UserManager<ApplicationUser> userManager, IUnitOfWork unitOfWork)
+        private static async Task InitializeAdminsAsync(this UserManager<ApplicationUser> userManager)
         {
             for (int i = 1; i <= 20; i++)
             {
@@ -31,15 +39,24 @@ namespace Sakany.Persistence.DataSeeding.Security.Users
                     UserName = $"admin{i}",
                     Email = $"admin{i}@sakany.com",
                     EmailConfirmed = true,
+                    PhoneNumber = "+201234567890",
+                    FirstName = $"Admin{i}",
+                    LastName = $"Admin{i}",
+                    BirthDate = DateOnly.FromDateTime(DateTime.UtcNow).AddYears(-20),
+                    UserProfile = new AdminProfile()
+                    {
+                        Bio = "Loading...",
+                        ImageUrl = "http://google.com",
+                        CivilId = "http://google.com",
+                    }
                 };
 
                 await userManager.CreateAsync(admin, "P@ssw0rd");
-                await unitOfWork.Repository<AdminProfile>().AddAsync(new AdminProfile() { UserId = admin.Id, Bio = string.Empty });
                 await userManager.AddToRoleAsync(admin, UserRole.Admin.ToString());
             }
         }
 
-        private static async Task InitializeRealtorsAsync(this UserManager<ApplicationUser> userManager, IUnitOfWork unitOfWork)
+        private static async Task InitializeRealtorsAsync(this UserManager<ApplicationUser> userManager)
         {
             for (int i = 1; i <= 20; i++)
             {
@@ -48,15 +65,25 @@ namespace Sakany.Persistence.DataSeeding.Security.Users
                     UserName = $"realtor{i}",
                     Email = $"realtor{i}@sakany.com",
                     EmailConfirmed = true,
+                    PhoneNumber = "+201234567890",
+                    FirstName = $"Realtor{i}",
+                    LastName = $"Realtor{i}",
+                    BirthDate = DateOnly.FromDateTime(DateTime.UtcNow).AddYears(-20),
+                    UserProfile = new RealtorProfile()
+                    {
+                        Bio = "Loading...",
+                        ImageUrl = "http://google.com",
+                        CivilId = "http://google.com",
+                        RealEstateContract = "http://google.com",
+                    }
                 };
 
                 await userManager.CreateAsync(realtor, "P@ssw0rd");
-                await unitOfWork.Repository<RealtorProfile>().AddAsync(new RealtorProfile() { UserId = realtor.Id, Bio = string.Empty });
                 await userManager.AddToRoleAsync(realtor, UserRole.Realtor.ToString());
             }
         }
 
-        private static async Task InitializeStudentsAsync(this UserManager<ApplicationUser> userManager, IUnitOfWork unitOfWork)
+        private static async Task InitializeStudentsAsync(this UserManager<ApplicationUser> userManager)
         {
             for (int i = 1; i <= 20; i++)
             {
@@ -65,20 +92,33 @@ namespace Sakany.Persistence.DataSeeding.Security.Users
                     UserName = $"student{i}",
                     Email = $"student{i}@sakany.com",
                     EmailConfirmed = true,
+                    PhoneNumber = "+201234567890",
+                    FirstName = $"Student{i}",
+                    LastName = $"Student{i}",
+                    BirthDate = DateOnly.FromDateTime(DateTime.UtcNow).AddYears(-20),
+                    UserProfile = new StudentProfile()
+                    {
+                        Bio = "Loading...",
+                        ImageUrl = "http://google.com",
+                        CivilId = "http://google.com",
+                        UniversityId = "http://google.com",
+                        Unviersity = "Sohag",
+                        College = "Computers and AI",
+                        Level = 4
+                    }
                 };
 
                 await userManager.CreateAsync(student, "P@ssw0rd");
-                await unitOfWork.Repository<StudentProfile>().AddAsync(new StudentProfile() { UserId = student.Id, Bio = string.Empty });
                 await userManager.AddToRoleAsync(student, UserRole.Student.ToString());
             }
         }
 
-        public static async Task InitializeUsersDataSeedingAsync(this UserManager<ApplicationUser> userManager, IUnitOfWork unitOfWork)
+        public static async Task InitializeUsersDataSeedingAsync(this UserManager<ApplicationUser> userManager)
         {
-            await userManager.InitializeAdminsAsync(unitOfWork);
-            await userManager.InitializeSuperAdminsAsync(unitOfWork);
-            await userManager.InitializeRealtorsAsync(unitOfWork);
-            await userManager.InitializeStudentsAsync(unitOfWork);
+            await userManager.InitializeAdminsAsync();
+            await userManager.InitializeSuperAdminsAsync();
+            await userManager.InitializeRealtorsAsync();
+            await userManager.InitializeStudentsAsync();
         }
     }
 }

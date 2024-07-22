@@ -45,8 +45,8 @@ namespace Sakany.Persistence.Migrations
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false, defaultValue: "InActive"),
                     ResetPasswordOTP = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ResetPasswordOTPExpiresAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 21, 15, 47, 38, 999, DateTimeKind.Utc).AddTicks(1169)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 21, 15, 47, 38, 999, DateTimeKind.Utc).AddTicks(1730)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 22, 13, 11, 52, 188, DateTimeKind.Utc).AddTicks(7987)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 22, 13, 11, 52, 188, DateTimeKind.Utc).AddTicks(8575)),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -104,8 +104,8 @@ namespace Sakany.Persistence.Migrations
                     RevokedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false, computedColumnSql: "CASE WHEN [RevokedAt] IS NULL AND [ExpiresAt] > GETUTCDATE() THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 21, 15, 47, 38, 998, DateTimeKind.Utc).AddTicks(968)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 21, 15, 47, 38, 998, DateTimeKind.Utc).AddTicks(1489)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 22, 13, 11, 52, 187, DateTimeKind.Utc).AddTicks(5760)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 22, 13, 11, 52, 187, DateTimeKind.Utc).AddTicks(6374)),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -176,8 +176,8 @@ namespace Sakany.Persistence.Migrations
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CivilId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 21, 15, 47, 39, 0, DateTimeKind.Utc).AddTicks(314)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 21, 15, 47, 39, 0, DateTimeKind.Utc).AddTicks(858)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 22, 13, 11, 52, 189, DateTimeKind.Utc).AddTicks(9060)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 22, 13, 11, 52, 189, DateTimeKind.Utc).AddTicks(9743)),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -289,7 +289,7 @@ namespace Sakany.Persistence.Migrations
                     UniversityId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Unviersity = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     College = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Level = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Level = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
